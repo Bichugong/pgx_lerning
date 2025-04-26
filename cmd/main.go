@@ -5,7 +5,6 @@ import (
 	"second_simple_server/pkg/repository"
 
 	"log"
-
 )
 const connStr = "postgres://mylt1c:Zexecmdirjkt8@localhost:5432/pushka"
 
@@ -14,11 +13,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	data, err := db.GetBooks()
+	item, err := db.GetBooksByID(7)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	for _, item := range data {
-		fmt.Printf("ID: %d, Name: %s, AuthorID: %d, GenreID: %d, Price: %d\n", item.ID, item.Name, item.AuthorID, item.GenreID, item.Price)
-	}
+	fmt.Printf("ID: %d, Name: %s, AuthorID: %d, GenreID: %d, Price: %d\n", item.ID, item.Name, item.AuthorID, item.GenreID, item.Price)
 }
+
